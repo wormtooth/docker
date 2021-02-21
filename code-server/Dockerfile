@@ -18,6 +18,9 @@ RUN adduser --disabled-password --gecos '' coder && \
     adduser coder sudo && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+# Create projects folder
+RUN mkdir -p /projects &&\
+    chown coder /projects
 USER coder
 
 # Environment
@@ -28,6 +31,6 @@ ENV SHELL=/bin/bash \
 
 # Entry Point
 EXPOSE 3000
-WORKDIR /home/coder
+WORKDIR /projects
 ENTRYPOINT ["code-server"]
 CMD []

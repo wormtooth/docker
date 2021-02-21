@@ -47,6 +47,9 @@ RUN pip uninstall -y shapely &&\
 RUN pip install torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio==0.7.0 \
     -f https://download.pytorch.org/whl/torch_stable.html
 
+# install sqlalchemy + mysql
+RUN pip install SQLAlchemy mysqlclient
+
 ARG USER=jupyter
 ARG UID=1000
 ARG GID=1000
