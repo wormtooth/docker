@@ -50,6 +50,11 @@ RUN pip install torch==1.7.0+cpu torchvision==0.8.1+cpu torchaudio==0.7.0 \
 # install sqlalchemy + mysql
 RUN pip install SQLAlchemy mysqlclient
 
+# install extra packages
+RUN pip install gensim python-dotenv jieba
+
+# install 
+
 ARG USER=jupyter
 ARG UID=1000
 ARG GID=1000
@@ -76,7 +81,7 @@ c.NotebookApp.open_browser = False\n\
 c.NotebookApp.ip = '*'\n\
 c.NotebookApp.allow_root = True" > /home/${USER}/.jupyter/jupyter_notebook_config.py
 
-VOLUME ["/home/${USER}/notebooks"]
+VOLUME ["/home/${USER}/notebooks", "/data"]
 
 EXPOSE 8888
 
